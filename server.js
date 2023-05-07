@@ -31,7 +31,7 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-const newQuizRoutes = require('./routes/new-quiz');
+const newQuizRoutes = require('./routes/quizzes');
 
 
 
@@ -41,7 +41,7 @@ const newQuizRoutes = require('./routes/new-quiz');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/quizzes/new', newQuizRoutes);
+app.use('/quizzes', newQuizRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
