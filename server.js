@@ -53,7 +53,7 @@ app.get('/last_quiz_page', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  res.render('login_page');
+  res.render('login');
 });
 
 app.listen(PORT, () => {
