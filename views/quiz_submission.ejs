@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz App Login</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,8 +15,9 @@
 
   <!-- App css -->
   <!-- <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" /> -->
-  <link rel="stylesheet" href="/public/styles/last_quiz_page.css" type="text/css" />
+  <link rel="stylesheet" href="/public/styles/quiz_submission.css" type="text/css" />
 
+  <title>submit_quiz</title>
 </head>
 
 
@@ -34,7 +34,7 @@
 
     <section>
 
-      <form>
+      <form action="quizzes/submit_quiz" method="POST">
 
         <div class="row mb-3">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Question 5:</label>
