@@ -17,5 +17,9 @@ const getQuizzesByUserId = (id) => {
     })
 }
 
+const submitQuiz = () => {
 
-module.exports = {getPublicQuizzes, getQuizzesByUserId};
+}
+
+
+module.exports = {getPublicQuizzes, getQuizzesByUserId, submitQuiz};
