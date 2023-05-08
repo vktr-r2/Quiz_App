@@ -17,14 +17,13 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(
-  '/styles',
   sassMiddleware({
     source: __dirname + '/styles',
     destination: __dirname + '/public/styles',
     isSass: false, // false => scss, true => sass
   })
 );
-app.use(express.static('/public/styles'));
+app.use(express.static('public'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -37,7 +36,6 @@ const newQuizRoutes = require('./routes/quizzes');
 
 const publicQuizQuery = require('./db/queries/quizzes');
 
-const publicQuizQuery = require('./db/queries/quizzes');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
