@@ -24,13 +24,18 @@ app.use(
     isSass: false, // false => scss, true => sass
   })
 );
-app.use(express.static('public'));
+app.use(express.static('/public/styles'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
+const newQuizRoutes = require('./routes/quizzes');
+
+
+
+const publicQuizQuery = require('./db/queries/quizzes');
 
 const publicQuizQuery = require('./db/queries/quizzes');
 
@@ -40,6 +45,7 @@ const publicQuizQuery = require('./db/queries/quizzes');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+app.use('/quizzes', newQuizRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
