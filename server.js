@@ -37,6 +37,8 @@ const newQuizRoutes = require('./routes/quizzes');
 
 const publicQuizQuery = require('./db/queries/quizzes');
 
+const publicQuizQuery = require('./db/queries/quizzes');
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
