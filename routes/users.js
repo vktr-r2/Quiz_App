@@ -15,8 +15,8 @@ router.get('/:id', (req, res) => {
 
   quizQueries.getQuizzesByUserId(userId)
   .then((quizzes) => {
-    const templateVar = {quizzes}
-    res.render('home', templateVar);
+    const templateVars = {quizzes}
+    res.render('home', templateVars);
   })
   .catch((err) => {
     res.send(err)
