@@ -8,8 +8,19 @@
 const express = require('express');
 const router  = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('users');
-}); 
+const quizQueries = require('../db/queries/quizzes')
+
+router.get('/:id', (req, res) => {
+  const userId = req.params.id;
+
+  quizQueries.getQuizzesByUserId(userId)
+  .then((quizzes) => {
+    const templateVars = {quizzes}
+    res.render('home', templateVars);
+  })
+  .catch((err) => {
+    res.send(err)
+  })
+});
 
 module.exports = router;

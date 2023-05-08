@@ -35,6 +35,8 @@ const newQuizRoutes = require('./routes/quizzes');
 
 
 
+const publicQuizQuery = require('./db/queries/quizzes');
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -49,7 +51,15 @@ app.use('/quizzes', newQuizRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  publicQuizQuery.getPublicQuizzes()
+    .then((quizzes) => {
+      console.log(quizzes);
+      const templateVars = { quizzes };
+      res.render('home', templateVars);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 app.get('/last_quiz_page', (req, res) => {
