@@ -58,6 +58,14 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/last_quiz_page', (req, res) => {
+  res.render('last_quiz_page');
+});
+
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
