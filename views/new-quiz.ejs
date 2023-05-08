@@ -14,11 +14,7 @@
       crossorigin="anonymous"
     />
 
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/../public/styles/new-quiz.css"
-    />
+    <link rel="stylesheet" type="text/css" href="/styles/new-quiz.css" />
 
     <!-- Add Inknut Antiqua font to file -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,6 +23,9 @@
       href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap"
       rel="stylesheet"
     />
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/submit_new_quiz.js"></script>
+
   </head>
   <body>
     <header>
@@ -34,94 +33,313 @@
       <h1>New Quiz</h1>
     </header>
 
-    <form action="/quizzes/new" method="post">
-      <label for="category">Category/Quiz Name:</label><br />
+    <form
+      action="/quizzes/new"
+      method="post"
+      name="quizSubmitForm"
+      id="quizSubmitForm"
+      class="quiz"
+    >
+      <label for="quizName">Category/Quiz Name:</label><br />
       <input
         type="text"
-        id="category"
-        name="category"
+        id="quizName"
+        name="quizName"
         placeholder="Ex: Our Solar System"
-      /><br />
-      <br /><br />
-      <!-- MUST INSERT EJS HERE LATER TO AUTOMATICALLY DISPLAY QUESTION NUMBER -->
-      <label for="question">Question # PLACEHOLDER :</label><br />
-      <input
-        type="text"
-        id="question"
-        name="question"
-        placeholder="Ex: What is the 5th closest planet to the sun?"
-        required
-      /><br />
-      <br /><br />
-      <label for="option1">Option 1:</label><br />
-      <input
-        type="text"
-        id="option1"
-        name="option1"
-        placeholder="Ex: Earth"
-        required
-      /><br />
-      <input
-        type="radio"
-        id="correct1"
-        name="correct"
-        value="correct1"
-        required
-      />
-      <label for="correct1">Correct Answer</label><br />
-      <br /><br />
-      <label for="option2">Option 2:</label><br />
-      <input
-        type="text"
-        id="option2"
-        name="option2"
-        placeholder="Ex: Jupiter"
-        required
-      /><br />
-      <input
-        type="radio"
-        id="correct2"
-        name="correct"
-        value="correct2"
-        required
-      />
-      <label for="correct2">Correct Answer</label><br />
-      <br /><br />
-      <label for="option3">Option 3:</label><br />
-      <input
-        type="text"
-        id="option3"
-        name="option3"
-        placeholder="Ex: Saturn"
-        required
-      /><br />
-      <input
-        type="radio"
-        id="correct3"
-        name="correct"
-        value="correct3"
-        required
-      />
-      <label for="correct3">Correct Answer</label><br />
-      <br /><br />
-      <label for="option4">Option 4:</label><br />
-      <input
-        type="text"
-        id="option4"
-        name="option4"
-        placeholder="Ex: Mercury"
-        required
-      /><br />
-      <input
-        type="radio"
-        id="correct4"
-        name="correct"
-        value="correct4"
-        required
-      />
-      <label for="correct4">Correct Answer</label><br /><br />
-      <br /><br />
-      <input type="submit" value="Submit" />
+      /><br /><br />
+      <input type="checkbox" id="isPrivate" name="isPrivate" class="quiz" />
+      <label for="isPrivate">Private</label><br /><br />
+      <button type="submit" id="quiz_submit_button">Next</button>
+    </form>
+
+    <br />
+    <br /><br />
+    <!-- MUST INSERT EJS HERE LATER TO AUTOMATICALLY DISPLAY QUESTION NUMBER -->
+
+    <form
+      action="/quizzes/new"
+      method="post"
+      name="questionSubmitForm"
+      class="questionSubmitForm"
+      id="questionSubmitForm"
+    >
+      <!-- QUESTION 1 -->
+      <div id="submit_question_1">
+        <label for="questionSubmitForm" class="q1">Enter Question #1 :</label
+        ><br />
+        <input type="text" id="question" name="q1SubmitForm" required /><br />
+
+        <label for="q1 a1" class="q1 a1">Answer 1:</label><br />
+        <input type="text" id="q1 a1" name="q1 a1" required />
+        <input
+          type="radio"
+          id="correct1"
+          name="q1Correct"
+          value="1"
+          class="q1 a1"
+          required
+        />
+        <label for="q1Correct">Correct Answer</label><br />
+
+        <label for="q1 a2" class="q1 a2">Answer 2:</label><br />
+        <input type="text" id="q1 a2" name="q1 a2" required />
+        <input
+          type="radio"
+          id="correct2"
+          name="q1Correct"
+          value="2"
+          class="q1 a2"
+          required
+        />
+        <label for="q1Correct">Correct Answer</label><br />
+
+        <label for="q1 a3" class="q1 a3">Answer 3:</label><br />
+        <input type="text" id="q1 a3" name="q1 a3" required />
+        <input
+          type="radio"
+          id="correct3"
+          name="q1Correct"
+          value="3"
+          class="q1 a3"
+          required
+        />
+        <label for="q1Correct">Correct Answer</label><br />
+
+        <label for="q1 a4" class="q1 a4">Answer 4:</label><br />
+        <input type="text" id="q1 a4" name="q1 a4" required />
+        <input
+          type="radio"
+          id="correct4"
+          name="q1Correct"
+          value="4"
+          class="q1 a4"
+          required
+        />
+        <label for="q1Correct">Correct Answer</label><br />
+      </div>
+
+      <!-- QUESTION 2 -->
+      <div id="submit_question_2">
+        <label for="questionSubmitForm" class="q1">Enter Question #2 :</label
+        ><br />
+        <input type="text" id="question" name="q2SubmitForm" required /><br />
+
+        <label for="q2 a1" class="q2 a1">Answer 1:</label><br />
+        <input type="text" id="q2 a1" name="q2 a1" required />
+        <input
+          type="radio"
+          id="correct1"
+          name="q2Correct"
+          value="1"
+          class="q2 a1"
+          required
+        />
+        <label for="q2Correct">Correct Answer</label><br />
+
+        <label for="q2 a2" class="q2 a2">Answer 2:</label><br />
+        <input type="text" id="q2 a2" name="q2 a2" required />
+        <input
+          type="radio"
+          id="correct2"
+          name="q2Correct"
+          value="2"
+          class="q2 a2"
+          required
+        />
+        <label for="q2Correct">Correct Answer</label><br />
+
+        <label for="q2 a3" class="q2 a3">Answer 3:</label><br />
+        <input type="text" id="q2 a3" name="q2 a3" required />
+        <input
+          type="radio"
+          id="correct3"
+          name="q2Correct"
+          value="3"
+          class="q2 a3"
+          required
+        />
+        <label for="q2Correct">Correct Answer</label><br />
+
+        <label for="q2 a4" class="q2 a4">Answer 4:</label><br />
+        <input type="text" id="q2 a4" name="q2 a4" required />
+        <input
+          type="radio"
+          id="correct4"
+          name="q2Correct"
+          value="4"
+          class="q2 a4"
+          required
+        />
+        <label for="q2Correct">Correct Answer</label><br />
+      </div>
+
+      <!-- QUESTION 3 -->
+      <div id="submit_question_3">
+        <label for="questionSubmitForm" class="q3">Enter Question #3 :</label
+        ><br />
+        <input type="text" id="question" name="q3SubmitForm" required /><br />
+
+        <label for="q3 a1" class="q3 a1">Answer 1:</label><br />
+        <input type="text" id="q3 a1" name="q3 a1" required />
+        <input
+          type="radio"
+          id="correct1"
+          name="q3Correct"
+          value="1"
+          class="q3 a1"
+          required
+        />
+        <label for="q3Correct">Correct Answer</label><br />
+
+        <label for="q3 a2" class="q3 a2">Answer 2:</label><br />
+        <input type="text" id="q3 a2" name="q3 a2" required />
+        <input
+          type="radio"
+          id="correct2"
+          name="q3Correct"
+          value="2"
+          class="q3 a2"
+          required
+        />
+        <label for="q3Correct">Correct Answer</label><br />
+
+        <label for="q3 a3" class="q3 a3">Answer 3:</label><br />
+        <input type="text" id="answer3" name="q3 a3" required />
+        <input
+          type="radio"
+          id="correct3"
+          name="q3Correct"
+          value="3"
+          class="q3 a3"
+          required
+        />
+        <label for="q3Correct">Correct Answer</label><br />
+
+        <label for="q3 a4" class="q3 a4">Answer 4:</label><br />
+        <input type="text" id="q3 a4" name="q3 a4" required />
+        <input
+          type="radio"
+          id="correct4"
+          name="q3Correct"
+          value="4"
+          class="q3 a4"
+          required
+        />
+        <label for="q3Correct">Correct Answer</label><br />
+      </div>
+
+      <!-- QUESTION 4 -->
+      <div id="submit_question_4">
+        <label for="questionSubmitForm" class="q4">Enter Question #4 :</label
+        ><br />
+        <input type="text" id="question" name="q4SubmitForm" required /><br />
+
+        <label for="q4 a1" class="q4 a1">Answer 1:</label><br />
+        <input type="text" id="q4 a1" name="q4 a1" required />
+        <input
+          type="radio"
+          id="correct1"
+          name="q4Correct"
+          value="1"
+          class="q4 a1"
+          required
+        />
+        <label for="q4Correct">Correct Answer</label><br />
+
+        <label for="q4 a2" class="q4 a2">Answer 2:</label><br />
+        <input type="text" id="q4 a2" name="q4 a2" required />
+        <input
+          type="radio"
+          id="correct2"
+          name="q4Correct"
+          value="2"
+          class="q4 a2"
+          required
+        />
+        <label for="q4Correct">Correct Answer</label><br />
+
+        <label for="q4 a3" class="q4 a3">Answer 3:</label><br />
+        <input type="text" id="q4 a3" name="q4 a3" required />
+        <input
+          type="radio"
+          id="correct3"
+          name="q4Correct"
+          value="3"
+          class="q4 a3"
+          required
+        />
+        <label for="q4Correct">Correct Answer</label><br />
+
+        <label for="q4 a4" class="q4 a4">Answer 4:</label><br />
+        <input type="text" id="q4 a4" name="q4 a4" required />
+        <input
+          type="radio"
+          id="correct4"
+          name="q4Correct"
+          value="4"
+          class="q4 a4"
+          required
+        />
+        <label for="q4Correct">Correct Answer</label><br />
+      </div>
+
+      <!-- QUESTION 5 -->
+      <div id="submit_question_5">
+        <label for="questionSubmitForm" class="q5">Enter Question #5 :</label
+        ><br />
+        <input type="text" id="question" name="q5SubmitForm" required /><br />
+
+        <label for="q5 a1" class="q5 a1">Answer 1:</label><br />
+        <input type="text" id="q5 a1" name="q5 a1" required />
+        <input
+          type="radio"
+          id="correct1"
+          name="q5Correct"
+          value="1"
+          class="q5 a1"
+          required
+        />
+        <label for="q5Correct">Correct Answer</label><br />
+
+        <label for="q5 a2" class="q5 a2">Answer 2:</label><br />
+        <input type="text" id="q5 a2" name="q5 a2" required />
+        <input
+          type="radio"
+          id="correct2"
+          name="q5Correct"
+          value="2"
+          class="q5 a2"
+          required
+        />
+        <label for="q5Correct">Correct Answer</label><br />
+
+        <label for="q5 a3" class="q5 a3">Answer 3:</label><br />
+        <input type="text" id="q5 a3" name="q5 a3" required />
+        <input
+          type="radio"
+          id="correct3"
+          name="q5Correct"
+          value="3"
+          class="q5 a3"
+          required
+        />
+        <label for="q5Correct">Correct Answer</label><br />
+
+        <label for="q5 a4" class="q5 a4">Answer 4:</label><br />
+        <input type="text" id="q5 a4" name="q5 a4" required />
+        <input
+          type="radio"
+          id="correct4"
+          name="q5Correct"
+          value="4"
+          class="q5 a4"
+          required
+        />
+        <label for="q5Correct">Correct Answer</label><br />
+      </div>
+
+      <br />
+      <input type="button" value="Next" id="question_submit_button"/>
     </form>
 
     <!-- Bootstrap JS -->

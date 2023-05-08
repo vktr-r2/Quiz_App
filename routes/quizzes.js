@@ -9,7 +9,7 @@ router.get('/new', (req, res) => {
 
 router.post('/new', (req, res) => {
   const { question, answer } = req.body;
-  //console.log(req.body);  //Confirmed working
+  console.log(req.body);  //Confirmed working
   // INSERT data objects into DB HERE once queries are written
   res.render('new-quiz');  //Render new quiz page again so user can submit another question
 });
