@@ -20,9 +20,11 @@
     />
   </head>
   <body>
+
     <header>
-      <h1>New Quiz</h1>
+      <%- include('./partials/_header') %>
     </header>
+
     <form action="/quizzes" method="post">
       <label for="category">Category/Quiz Name:</label><br />
       <input
