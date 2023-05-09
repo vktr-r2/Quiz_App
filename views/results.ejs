@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <%- include('./partials/_head') %>
+  <link rel="stylesheet" href="../public/styles/results.css">
+
+  <title>Results page</title>
+
+</head>
+
+<body>
+  <header>
+    <%- include('./partials/_header') %>
+  </header>
+
+  <main class="container d-flex flex-column align-items-center my-5">
+    <!-- if score >= 50%  -->
+
+    <div class="d-flex flex-column align-items-centmasterer my-5">
+      <h2 class="fs-1">Great Job!</h2>
+      <p class="fs-3">You scored <span class="fw-bold">X/Y</span></p>
+      <a href="">share your result with friends</a>
+
+    </div>
+
+
+    <!-- if score < 50% -->
+    <div class="d-flex flex-column align-items-center my-5">
+      <h2 class="fs-1">Not so great!</h2>
+
+      <p class="fs-3">You scored <span class="fw-bold">X/Y</span></p>
+      <!-- this should redirect to the public quiz page -->
+      <a href="">Try again?</a>
+      <a href="">share your result with friends</a>
+    </div>
+
+    <div class="my-5">
+      <h4>This Div holds the questions and their correct answers. </h4>
+    </div>
+
+
+  </main>
+
+
+</body>
+</html>
+
+
