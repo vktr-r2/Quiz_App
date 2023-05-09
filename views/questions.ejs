@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/styles/main.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/public/scripts/questions.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/questions.js"></script> -->
 
   <title>Questions</title>
 </head>
@@ -26,15 +26,15 @@
   </header>
   <main>
     <% for(let i = 0; i < questions.length; i++) { %>
-    <h2><%= questions[i].name %></h2>
-    <section id="questions">
-      <form id="quizSubmit" method="POST" action="/results">
+    <section class="questions">
+      <h2><%= questions[i].name %></h2>
+      <form id="quiz-submit" method="POST" action="<% `/${questions[i].id}` %>">
         <div class="qNumber"><%= `Question ${questions[i].question_number}` %></div>
         <div class="question"><%= questions[i].question %></div>
         <% for(let j = 0; j < answers.length; j++) { %>
           <% if(questions[i].question_number === answers[j].question_id) { %>
-            <input type="radio" id="<%= answers[j].answer %>" name="answer" value="<%= answers[j].answer %>">
-            <label for="q1 a1"><%= answers[j].answer %></label>
+            <input type="radio" id="answer" name="answer" value="<%= answers[j].answer %>">
+            <label for="answers[j].answer"><%= answers[j].answer %></label>
             <br>
           <% } %>
         <% } %>

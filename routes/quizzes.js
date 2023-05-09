@@ -34,5 +34,10 @@ router.get('/:id', (req, res) => {
   })
 });
 
+router.post('/:id', (req, res) => {
+  const {answer} = req.body;
+  console.log(answer);
+})
+
 
 module.exports = router;

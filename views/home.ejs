@@ -29,7 +29,7 @@
           <% if (!quiz.private) { %>
           <li class="quiz"><a href="/quizzes/<%= quiz.id %>"><%= `Quiz ${quiz.id} - Public quiz ${quiz.id} - ${quiz.name}` %></a></li>
           <% } else { %>
-          <li class="quiz"><a href="/quizzes/<%= quiz.id %>"><%= `Quiz ${quiz.id} - Private quiz ${quiz.id} - ${quiz.name}` %>=""></a></li>
+          <li class="quiz"><a href="/quizzes/<%= quiz.id %>"><%= `Quiz ${quiz.id} - Private quiz ${quiz.id} - ${quiz.name}` %></a></li>
           <% } %>
       </ul>
       <% }) %>
