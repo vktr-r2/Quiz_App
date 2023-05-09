@@ -16,6 +16,15 @@ const getQuizzesByUserId = (id) => {
       return res.rows;
     })
 }
+
+const getQuestionsByQuizId = (id) => {
+  return db.query((
+    `SELECT * FROM questions WHERE quiz_id IN ($1)`),[id])
+    .then ((res) => {
+      return res.rows;
+    })
+}
+
 //ADDED BY VIK - NOT COMPLETE
 const submitQuiz = () => {
 const query = {
@@ -33,4 +42,4 @@ pool.query(query)
 };
 
 
-module.exports = {getPublicQuizzes, getQuizzesByUserId, submitQuiz};
+module.exports = {getPublicQuizzes, getQuizzesByUserId, getQuestionsByQuizId, submitQuiz};

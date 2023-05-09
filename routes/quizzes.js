@@ -1,4 +1,6 @@
 const submitQuiz = require('../db/queries/quizzes');
+const questionQueries = require('../db/queries/questions')
+const answerQueries = require('../db/queries/answers')
 
 const express = require('express');
 const router  = express.Router();
@@ -22,6 +24,29 @@ router.post('/submit_quiz', (req, res) => {
   // should render results page.
   res.render('....');
 });
+
+
+router.get('/:id', (req, res) => {
+  const quizId = req.params.id;
+
+  questionQueries.getQuestionsByQuizId(quizId)
+  .then((questions) => {
+    answerQueries.getAnswersByQuizId(quizId)
+    .then((answers) => {
+      const templateVars = {questions, answers}
+      // console.log("templateVars", templateVars)
+      res.render('questions', templateVars);
+    })
+  })
+  .catch((err) => {
+    res.send(err)
+  })
+});
+
+router.post('/:id', (req, res) => {
+  const {answer} = req.body;
+  console.log(answer);
+})
 
 
 module.exports = router;
