@@ -17,9 +17,29 @@ const getQuizzesByUserId = (id) => {
     })
 }
 
-const submitQuiz = () => {
-
+const getQuestionsByQuizId = (id) => {
+  return db.query((
+    `SELECT * FROM questions WHERE quiz_id IN ($1)`),[id])
+    .then ((res) => {
+      return res.rows;
+    })
 }
 
+//ADDED BY VIK - NOT COMPLETE
+const submitQuiz = () => {
+const query = {
+  text: 'INSERT INTO users (username, password) VALUES ($1, $2)',
+  values: [username, password],
+};
 
-module.exports = {getPublicQuizzes, getQuizzesByUserId, submitQuiz};
+pool.query(query)
+  .then(() => {
+    console.log('Data inserted successfully');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+};
+
+
+module.exports = {getPublicQuizzes, getQuizzesByUserId, getQuestionsByQuizId, submitQuiz};
