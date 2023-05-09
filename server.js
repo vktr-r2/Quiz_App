@@ -17,14 +17,13 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(
-  '/styles',
   sassMiddleware({
     source: __dirname + '/styles',
     destination: __dirname + '/public/styles',
     isSass: false, // false => scss, true => sass
   })
 );
-app.use(express.static('/public/styles'));
+app.use(express.static('public'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -32,10 +31,6 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const newQuizRoutes = require('./routes/quizzes');
-
-
-
-const publicQuizQuery = require('./db/queries/quizzes');
 
 const publicQuizQuery = require('./db/queries/quizzes');
 
@@ -55,7 +50,6 @@ app.use('/quizzes', newQuizRoutes);
 app.get('/', (req, res) => {
   publicQuizQuery.getPublicQuizzes()
     .then((quizzes) => {
-      console.log(quizzes);
       const templateVars = { quizzes };
       res.render('home', templateVars);
     })

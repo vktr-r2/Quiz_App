@@ -17,9 +17,17 @@ const getQuizzesByUserId = (id) => {
     })
 }
 
+const getQuestionsByQuizId = (id) => {
+  return db.query((
+    `SELECT * FROM questions WHERE quiz_id IN ($1)`),[id])
+    .then ((res) => {
+      return res.rows;
+    })
+}
+
 const submitQuiz = () => {
 
 }
 
 
-module.exports = {getPublicQuizzes, getQuizzesByUserId, submitQuiz};
+module.exports = {getPublicQuizzes, getQuizzesByUserId, getQuestionsByQuizId, submitQuiz};
