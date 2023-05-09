@@ -3,13 +3,21 @@ $(document).ready(function() {
 
   $('#quizSubmitForm').on("submit",function(event) {
     event.preventDefault();
+    console.log("Test first statement")
     clickCount++;
-    console.log("Test FIRST listener")
-    console.log("Current clickCount =", clickCount);
     if (clickCount === 1) {
-      $('#quizSubmitForm').submit();
-      $('#quizSubmitForm').hide();
-      $('#submit_question_1').show();
+      $.ajax({
+        type: "POST",
+        url: "/quizzes/new",
+        data: $('#quizSubmitForm').serialize(),
+        success: function() {
+          $('#quizSubmitForm').hide();
+          $('#submit_question_1').show();
+        },
+        error: function() {
+          console.log("Error submitting quiz");
+        }
+      });
     }
   });
 
@@ -17,7 +25,7 @@ $(document).ready(function() {
   $('#question_submit_button').on("click", function(event) {
     event.preventDefault();
     console.log("Test SECOND listener")
-    clickCount++;
+    clickCount += 1;
     console.log("Current clickCount =", clickCount);
     if (clickCount === 3) {
       $('#submit_question_1').hide();

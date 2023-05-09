@@ -16,21 +16,21 @@ const getQuizzesByUserId = (id) => {
       return res.rows;
     })
 }
-//ADDED BY VIK
-// const submitQuiz = () => {
-// const query = {
-//   text: 'INSERT INTO users (username, password) VALUES ($1, $2)',
-//   values: [username, password],
-// };
+//ADDED BY VIK - NOT COMPLETE
+const submitQuiz = () => {
+const query = {
+  text: 'INSERT INTO users (username, password) VALUES ($1, $2)',
+  values: [username, password],
+};
 
-// pool.query(query)
-//   .then(() => {
-//     console.log('Data inserted successfully');
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
-// };
+pool.query(query)
+  .then(() => {
+    console.log('Data inserted successfully');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+};
 
 
 module.exports = {getPublicQuizzes, getQuizzesByUserId, submitQuiz};
