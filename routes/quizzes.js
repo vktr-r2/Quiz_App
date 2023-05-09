@@ -1,7 +1,7 @@
 const submitQuiz = require('../db/queries/quizzes');
 const questionQueries = require('../db/queries/questions')
 const answerQueries = require('../db/queries/answers')
-const { addPrivateId } = require("../helpers/new_quiz_helpers");
+const { addPrivateId, addUserId } = require("../helpers/new_quiz_helpers");
 
 const express = require('express');
 const router  = express.Router();
@@ -13,6 +13,7 @@ router.get('/new', (req, res) => {
 router.post('/new', (req, res) => {
   // const { question, answer } = req.body;
   addPrivateId(req.body);
+  addUserId(req);
   console.log(req.body);
 
   //Confirmed working
