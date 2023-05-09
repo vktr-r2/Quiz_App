@@ -16,6 +16,7 @@ const getQuizzesByUserId = (id) => {
       return res.rows;
     })
 }
+<<<<<<< HEAD
 
 const getQuestionsByQuizId = (id) => {
   return db.query((
@@ -25,9 +26,23 @@ const getQuestionsByQuizId = (id) => {
     })
 }
 
+=======
+//ADDED BY VIK - NOT COMPLETE
+>>>>>>> 5b84c0e1da818413912662b30f6a933414ae12d9
 const submitQuiz = () => {
+const query = {
+  text: 'INSERT INTO users (username, password) VALUES ($1, $2)',
+  values: [username, password],
+};
 
-}
+pool.query(query)
+  .then(() => {
+    console.log('Data inserted successfully');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+};
 
 
 module.exports = {getPublicQuizzes, getQuizzesByUserId, getQuestionsByQuizId, submitQuiz};
