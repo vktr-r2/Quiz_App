@@ -80,7 +80,7 @@ const submitQuestion = (quiz_id, question_number, question) => {
 // submitAnswer takes question_id from submitQuestion promise, and answer and is_correct from form
 const submitAnswer = (question_id, answer, is_correct) => {
   //Insert values into the answers table
-  const queryText = 'INSERT INTO answers(question_id, answer, is_correct) VALUES($1, $2, $3)';
+  const queryText = 'INSERT INTO answers(question_id, answer, is_correct)tus VALUES($1, $2, $3)';
   //Values to be inserted
   const values = [question_id, answer, is_correct];
 
