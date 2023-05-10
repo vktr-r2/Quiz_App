@@ -16,10 +16,13 @@ router.get('/:id/:userId/quiz_result', (req, res) => {
    resultQueries.getTotalQuestions(quizId)
    .then((totalQuestions) => {
     console.log('This is the number of total questions:', totalQuestions)
+
      let score = correctAnswers.result // because the results table already has the number and there is no need to calculate this again.
      console.log(score)
-      let total = Number(totalQuestions.total_questions); //total number of questions in a quiz.
+
+      let total = Number(totalQuestions.total_questions); //total number of questions in a quiz. i an changing the datatype to Number as it returns the count as a string.
       console.log(total)
+
       let scorePercent = Math.floor((score / total)* 100);
       console.log('This is the score percentage:', scorePercent)
 
