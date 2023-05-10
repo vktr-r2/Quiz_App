@@ -7,7 +7,7 @@ const getTotalCorrectAnswers = (user_id, quiz_id) => {
     WHERE user_id = ($1)
     AND quiz_id = ($2)`), [user_id, quiz_id])
   .then((res) => {
-    return res.rows;
+    return res.rows[0];
   })
 };
 
@@ -17,9 +17,9 @@ const getTotalQuestions = (quiz_id) => {
     FROM questions
     WHERE quiz_id = $1`), [quiz_id])
   .then((res) => {
-    return res.rows;
+    return res.rows[0];
   })
-}
+};
 
 
 module.exports = { getTotalCorrectAnswers, getTotalQuestions }
