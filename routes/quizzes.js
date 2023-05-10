@@ -1,4 +1,4 @@
-const { submitQuiz } = require("../db/queries/quizzes");
+const { submitQuiz, submitQuestion, submitAnswer } = require("../db/queries/quizzes");
 const questionQueries = require("../db/queries/questions");
 const answerQueries = require("../db/queries/answers");
 const { addPrivateId, addUserId } = require("../helpers/new_quiz_helpers");

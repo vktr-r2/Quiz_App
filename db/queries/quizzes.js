@@ -50,7 +50,7 @@ const submitQuiz = (user_id, name, private, private_id) => {
   );
 };
 
-// submitQuestion takes quiz_id from submitQuiz implementation, and question_number, question from form submit
+// submitQuestion takes quiz_id from submitQuiz promise, and question_number, question from form submit
 const submitQuestion = (quiz_id, question_number, question) => {
   //RETURNING id returned so it can be inserted as quiz_id when inserting answers
   const queryText =
@@ -61,8 +61,7 @@ const submitQuestion = (quiz_id, question_number, question) => {
 
   // return db.query returns a promise that resolves to the result of query
   return (
-    db
-      .query(queryText, values)
+    db.query(queryText, values)
       //query results passed to callback function
       .then((res) => {
         //res.rows returns array of object.  First element in that array is our inserted object, so storing value of 'id' for that object
@@ -73,9 +72,28 @@ const submitQuestion = (quiz_id, question_number, question) => {
       })
       .catch((err) => {
         //.catch captures any potential error and logs error for query if truthy
-        console.error(`Error executing submitQuestion query:`, err);
+        console.error('Error executing submitQuestion query:', err);
       })
   );
+};
+
+// submitAnswer takes question_id from submitQuestion promise, and answer and is_correct from form
+const submitAnswer = (question_id, answer, is_correct) => {
+  //Insert values into the answers table
+  const queryText = 'INSERT INTO answers(question_id, answer, is_correct) VALUES($1, $2, $3)';
+  //Values to be inserted
+  const values = [question_id, answer, is_correct];
+
+  // return db.query returns a promise that resolves to success message
+  return db.query(queryText, values)
+    .then((res) => {
+      console.log('Quiz submitted successfully')
+    })
+
+    .catch((err) => {
+      //.catch captures any potential error and logs error for query if truthy
+      console.error('Error executing submitAnswer query:', err);
+    });
 };
 
 module.exports = {
@@ -84,4 +102,5 @@ module.exports = {
   getQuestionsByQuizId,
   submitQuiz,
   submitQuestion,
+  submitAnswer
 };
