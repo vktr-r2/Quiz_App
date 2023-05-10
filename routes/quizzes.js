@@ -3,7 +3,10 @@ const questionQueries = require('../db/queries/questions')
 const answerQueries = require('../db/queries/answers')
 
 const express = require('express');
+const cookieParser = require('cookie-parser')
 const router  = express.Router();
+
+router.use(cookieParser())
 
 router.get('/new', (req, res) => {
   res.render('new-quiz');
@@ -28,12 +31,14 @@ router.post('/submit_quiz', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const quizId = req.params.id;
+  const qNum = req.query.qNum || 1
 
   questionQueries.getQuestionsByQuizId(quizId)
   .then((questions) => {
     answerQueries.getAnswersByQuizId(quizId)
     .then((answers) => {
-      const templateVars = {questions, answers}
+      const question = questions[qNum - 1]
+      const templateVars = {question, answers}
       // console.log("templateVars", templateVars)
       res.render('questions', templateVars);
     })
@@ -44,8 +49,14 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
-  const {answer} = req.body;
-  console.log(answer);
+  const quizId = req.params.id;
+  const userId = req.cookies.userId;
+  const {answer, nextQ} = req.body;
+  console.log(userId);
+
+  
+  // todo database query to store answer
+  res.redirect(`/quizzes/${quizId}?qNum=${nextQ}`)
 })
 
 

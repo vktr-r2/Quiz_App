@@ -1,14 +1,7 @@
-$(document).ready(function () {
-  let questionCount = 0;
+// $(document).ready(function () {
+//   let questionCount = 1;
 
-  if($(".question1").val() === 1) {
-    console.log($(".question1").val())
-    $(".question1").show()
-  }
-
-  $(".next").on("click", function() {
-    if($("#answer").val()) {
-
-    }
-  })
-});
+//   $(".next").on("click", function() {
+    
+//   })
+// });
