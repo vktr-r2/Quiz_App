@@ -8,6 +8,7 @@ const getTotalCorrectAnswers = (user_id, quiz_id) => {
     AND quiz_id = ($2)`), [user_id, quiz_id])
   .then((res) => {
     return res.rows[0];
+    // return res.rows[0].result;
   })
 };
 
@@ -17,6 +18,7 @@ const getTotalQuestions = (quiz_id) => {
     FROM questions
     WHERE quiz_id = $1`), [quiz_id])
   .then((res) => {
+    // return res.rows[0];
     return res.rows[0];
   })
 };
