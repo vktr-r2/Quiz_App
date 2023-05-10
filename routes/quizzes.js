@@ -9,6 +9,7 @@ const router = express.Router();
 router.get("/new", (req, res) => {
   res.render("new-quiz");
 });
+
 ////////////////////////////////////////////
 //POST to '/new' endpoint where quiz will be submitted
 router.post("/new", (req, res) => {
