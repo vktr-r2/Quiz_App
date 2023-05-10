@@ -16,7 +16,7 @@ router.get('/:id/:userId/quiz_result', (req, res) => {
    resultQueries.getTotalQuestions(quizId)
    .then((totalQuestions) => {
     console.log('This is the number of total questions:', totalQuestions)
-     let score = correctAnswers.result // becasue the results table already has the number and there is no need to calculate this again.
+     let score = correctAnswers.result // because the results table already has the number and there is no need to calculate this again.
      console.log(score)
       let total = Number(totalQuestions.total_questions); //total number of questions in a quiz.
       console.log(total)
