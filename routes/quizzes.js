@@ -1,4 +1,4 @@
-const submitQuiz = require('../db/queries/quizzes');
+const { submitQuiz } = require('../db/queries/quizzes');
 const questionQueries = require('../db/queries/questions')
 const answerQueries = require('../db/queries/answers')
 const { addPrivateId, addUserId } = require("../helpers/new_quiz_helpers");
@@ -11,14 +11,20 @@ router.get('/new', (req, res) => {
 });
 
 router.post('/new', (req, res) => {
-  // const { question, answer } = req.body;
   addPrivateId(req.body);
   addUserId(req);
-  console.log(req.body);
+  const quizObj = req.body;
+  console.log("QUIZ OBJECT:", quizObj);
 
-  //Confirmed working
-  // INSERT data objects into DB HERE once queries are written
-  res.render('new-quiz');  //Render new quiz page again so user can submit another question
+  submitQuiz(quizObj.user_id, quizObj.quiz_name, quizObj.private, quizObj.private_id)
+    .then((quiz_id) => {
+      console.log("QUIZ ID", quiz_id);
+    })
+    .catch((err) => {
+      console.error(`Error: ${err}`);
+    });
+
+  res.render('new-quiz');
 });
 
 router.get('/submit_quiz', (req, res) => {

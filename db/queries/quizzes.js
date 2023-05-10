@@ -25,7 +25,6 @@ const getQuestionsByQuizId = (id) => {
     })
 }
 
-//ADDED BY VIK - NOT COMPLETE
 // submitQuiz takes user_id, name, private, and private_id
 const submitQuiz = (user_id, name, private, private_id) => {
 
@@ -42,12 +41,12 @@ const submitQuiz = (user_id, name, private, private_id) => {
     .then((res) => {
       //res.rows returns just one row (array) because only one row was inserted.  First element of rows array will be id to retrieve
       const quiz_id = res.rows[0].id;
-      //TEST console.log quiz_id to see if it is being returned properly
+      //quiz_id returned
       return quiz_id;
     })
     //.catch captures any potential error and logs error for query if truthy
     .catch((err) => {
-      console.error(`Error executing submitQuiz query`);
+      console.error(`Error executing submitQuiz query: ${err.stack}`);
     });
 };
 
