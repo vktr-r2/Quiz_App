@@ -68,8 +68,24 @@ router.post("/new", (req, res) => {
     });
 
   console.log('Quiz submitted successfully!!')
-  res.render("new-quiz");
+  res.redirect("confirm");
 });
+
+//GET confirm page (after submitting quiz)
+router.get('/confirm', (req, res) => {
+  const currentURL = req.headers.host + req.url
+  console.log('currentURL')
+  const templateVars = { currentURL }
+  res.render('confirm', templateVars);
+});
+
+//POST confirm page
+// router.post('/confirm', (req, res) => {
+//   const currentURL = req.headers.host + req.url
+//   console.log('currentURL')
+//   const templateVars = { currentURL }
+//   res.render('confirm', templateVars);
+// });
 
 ///////////////////////////////////////////
 router.get("/submit_quiz", (req, res) => {
