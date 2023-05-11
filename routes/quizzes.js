@@ -72,6 +72,7 @@ router.post("/new", (req, res) => {
       console.error("Error: ", err);
     });
 
+  res.redirect("confirm");
 });
 
 //GET confirm page (after submitting quiz)
@@ -84,14 +85,6 @@ router.get('/confirm', (req, res) => {
   delete req.session.quiz_id;
   res.render('confirm', templateVars);
 });
-
-//POST confirm page
-// router.post('/confirm', (req, res) => {
-//   const currentURL = req.headers.host + req.url
-//   console.log('currentURL')
-//   const templateVars = { currentURL }
-//   res.render('confirm', templateVars);
-// });
 
 ///////////////////////////////////////////
 router.get("/submit_quiz", (req, res) => {
@@ -132,10 +125,9 @@ router.post('/:id', (req, res) => {
 
   resultQueries.getResultByQuizIdAndUserId(quizId, userId)
   .then((result) => {
-    // console.log("result: ", res)
     // check if result exists, giving userId, QuizId
     if(!result) {
-      // If result does not exist create result with at 0
+      // If result does not exist and answer is false, create result with at 0 or answer is true, create result with at 1
       insertResultQueries.insertResultsByQuizIdAndUesrId(quizId, userId, answer === "true" ? 1 : 0)
     } else {
       let newResult = result.result + (answer === "true" ? 1 : 0);

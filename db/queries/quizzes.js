@@ -1,11 +1,13 @@
 const db = require("../connection");
 
+// get all public quizzes
 const getPublicQuizzes = () => {
   return db.query(`SELECT * FROM quizzes WHERE private = false`).then((res) => {
     return res.rows;
   });
 };
 
+// get all public quizzes and private using userId quizzes
 const getQuizzesByUserId = (id) => {
   return db
     .query(`SELECT * FROM quizzes WHERE private = false OR private = true AND user_id = $1`, [id])
@@ -14,6 +16,7 @@ const getQuizzesByUserId = (id) => {
     });
 };
 
+// get all questions by quizId
 const getQuestionsByQuizId = (id) => {
   return db
     .query(`SELECT * FROM questions WHERE quiz_id IN ($1)`, [id])

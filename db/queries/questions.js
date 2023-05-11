@@ -7,7 +7,6 @@ const getQuestionsByQuizId = (id) => {
       WHERE quizzes.id = $1
       ORDER BY questions.question_number`), [id])
     .then ((res) => {
-      // console.log(res.rows);
       return res.rows;
     })
 }
