@@ -25,8 +25,8 @@
         <div class="qNumber"><%= `Question ${question.question_number}` %></div>
         <div class="question"><%= question.question %></div>
         <% answers.forEach(answer => { %>
-          <% if(question.question_number === answer.question_id) { %>
-            <input type="radio" id="answer" name="answer" value="<%= answer.is_correct %>">
+          <% if(question.id === answer.question_id) { %>
+            <input type="radio" id="answer" name="answer" value="<%= answer.is_correct %>" required>
             <label for="answer.answer"><%= answer.answer %></label>
             <br>
           <% } %>
