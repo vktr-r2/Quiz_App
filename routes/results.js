@@ -26,9 +26,11 @@ router.get('/:id/:userId/quiz_result', (req, res) => {
       let scorePercent = Math.floor((score / total)* 100);
       console.log('This is the score percentage:', scorePercent)
 
+      let quizName = totalQuestions.name
+
       //Get URL from req and save in url variable
       const currentURL = req.headers.host + req.url;
-      const templateVars = { score, total, scorePercent, currentURL }
+      const templateVars = { score, total, scorePercent, currentURL, quizName }
       res.render('results', templateVars);
     })
   })

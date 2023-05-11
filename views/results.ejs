@@ -26,6 +26,7 @@
     <% if (scorePercent >= 50) { %>
       <div class="d-flex flex-column align-items-center my-5" id="passed_quiz">
         <h2 class="fs-1">Great Job! 🎉</h2>
+        <h3> <%= quizName %> </h3>
         <!-- <p class="fs-3">You scored <span class="fw-bold">X/Y</span></p> -->
         <p class="fs-3 pb-3">You scored <span class="fw-bold" id="score"><%= score %></span> / <span id="total" class="fw-bold"><%= total %></span></p>
         <a href="" class="btn">share your result with friends</a>
@@ -34,6 +35,7 @@
       <!-- if score < 50% -->
       <div class="d-flex flex-column align-items-center my-5" id="failed_quiz">
         <h2 class="fs-1">Not so great! 😩 </h2>
+        <h3> <%= quizName %> </h3>
         <p class="fs-3">You scored <span class="fw-bold" id="score"><%= score %></span> / <span id="total" class="fw-bold"><%= total %></span></p>
         <!-- <p class="fs-3">You scored <span class="fw-bold">X/Y</span></p> -->
         <!-- this should redirect to the public quiz page -->
