@@ -29,7 +29,9 @@
         <h3> <%= quizName %> </h3>
         <!-- <p class="fs-3">You scored <span class="fw-bold">X/Y</span></p> -->
         <p class="fs-3 pb-3">You scored <span class="fw-bold" id="score"><%= score %></span> / <span id="total" class="fw-bold"><%= total %></span></p>
-        <a href="" class="btn">share your result with friends</a>
+        <a href="" class="btn" id="share">share your result with friends</a>
+        <p class="my-3" id="show_url" ><%= currentURL %></p>
+
       </div>
     <% } else { %>
       <!-- if score < 50% -->
@@ -39,8 +41,9 @@
         <p class="fs-3">You scored <span class="fw-bold" id="score"><%= score %></span> / <span id="total" class="fw-bold"><%= total %></span></p>
         <!-- <p class="fs-3">You scored <span class="fw-bold">X/Y</span></p> -->
         <!-- this should redirect to the public quiz page -->
-        <a class="pb-3" href="http://localhost:8080/">Try again?</a>
-        <a href="" class="btn">share your result with friends</a>
+        <a class="pb-3" href="http://localhost:8080/home">Try again?</a>
+        <a href="" class="btn" id="share">share your result with friends</a>
+        <p class="my-3" id="show_url"><%= currentURL %></p>
       </div>
     <% } %>
       <!-- how do i make this display all the questions and correct answers.  -->
