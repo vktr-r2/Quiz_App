@@ -32,7 +32,7 @@ const submitQuiz = (quizObj) => {
     "INSERT INTO quizzes(user_id, name, private, private_id) VALUES($1, $2, $3, $4) RETURNING id";
 
   //Values to be inserted into db
-  const values = [user_id, quiz_name, private, private_id];
+  const values = [user_id, quiz_name, !!private, private_id];
 
   // return db.query returns a promise that resolves to the result of query
   return (
