@@ -107,7 +107,6 @@ router.post('/:id', (req, res) => {
   const quizId = req.params.id;
   const userId = req.cookies.userId;
   const {answer, nextQ} = req.body;
-  console.log("answer: ", answer);
 
   resultQueries.getResultByQuizIdAndUserId(quizId, userId)
   .then((result) => {
