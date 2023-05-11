@@ -18,16 +18,22 @@
   <header>
     <%- include('./partials/_header') %>
   </header>
-  <main>
+  <main class="container">
     <section class="questions">
-      <h2><%= question.name %></h2>
-      <form id="quiz-submit" method="POST" action="<% `/${question.quiz_id}?qNum=${question.question_number}` %>">
-        <div class="qNumber"><%= `Question ${question.question_number}` %></div>
-        <div class="question"><%= question.question %></div>
+      <div class="d-flex justify-content-center">
+        <h2><%= question.name %></h2>
+      </div>
+
+
+      <form class="p-5" id="quiz-submit" method="POST" action="<% `/${question.quiz_id}?qNum=${question.question_number}` %>">
+
+        <div class="qNumber fs-3"><%= `Question ${question.question_number}` %></div>
+
+        <div class="question my-2"><%= question.question %></div>
         <% answers.forEach(answer => { %>
           <% if(question.id === answer.question_id) { %>
-            <input type="radio" id="answer" name="answer" value="<%= answer.is_correct %>">
-            <label for="answer.answer"><%= answer.answer %></label>
+            <input type="radio" id="answer" name="answer" value="<%= answer.is_correct %>" >
+            <label for="answer.answer" class="px-3 py-2"><%= answer.answer %></label>
             <br>
           <% } %>
         <% }) %>
