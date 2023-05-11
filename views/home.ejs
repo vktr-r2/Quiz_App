@@ -18,13 +18,14 @@
   </header>
   <main>
     <h2>Welcome to Quiz App</h2>
+    <h4 class="pb-3">Pick a quiz below. Good luck! 😊</h4>
     <section id="quizzes">
-      <ul class="quiz-list">
+      <ul class="quiz-list my-3">
         <% quizzes.forEach(quiz => { %>
           <% if (!quiz.private) { %>
-          <li class="quiz"><a href="/quizzes/<%= quiz.id %>"><%= `Quiz ${quiz.id} - Public quiz ${quiz.id} - ${quiz.name}` %></a></li>
+          <li class="quiz my-3"><a href="/quizzes/<%= quiz.id %>"><%= `Quiz ${quiz.id} - Public quiz ${quiz.id} - ${quiz.name}` %></a></li>
           <% } else { %>
-          <li class="quiz"><a href="/quizzes/<%= quiz.id %>"><%= `Quiz ${quiz.id} - Private quiz ${quiz.id} - ${quiz.name}` %></a></li>
+          <li class="quiz my-3"><a href="/quizzes/<%= quiz.id %>"><%= `Quiz ${quiz.id} - Private quiz ${quiz.id} - ${quiz.name}` %></a></li>
           <% } %>
       </ul>
       <% }) %>
