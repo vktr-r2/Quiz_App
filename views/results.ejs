@@ -9,8 +9,10 @@
   <link rel="stylesheet" href="../public/styles/results.css">
   <title>Results page</title>
 
+  <!-- Jquery -->
+  <script src="/vendor/jquery-3.0.0.js"></script>
   <!-- js script  -->
-  <script type="text/javascript" src="../public/scripts/results.js"></script>
+  <script type="text/javascript" src="/scripts/results.js"></script>
 
 </head>
 
@@ -26,7 +28,10 @@
         <h2 class="fs-1">Great Job!</h2>
         <!-- <p class="fs-3">You scored <span class="fw-bold">X/Y</span></p> -->
         <p class="fs-3">You scored <span class="fw-bold" id="score"><%= score %></span> / <span id="total" class="fw-bold"><%= total %></span></p>
-        <a href="">share your result with friends</a>
+        <!-- <a href="">share your result with friends</a> -->
+        <a class="btn" type="button" id="share" role="button">Share your results</a>
+        <input type="text" id="show_url" value="<%= currentURL %>" readonly>
+
       </div>
     <% } else { %>
       <!-- if score < 50% -->
@@ -36,7 +41,10 @@
         <!-- <p class="fs-3">You scored <span class="fw-bold">X/Y</span></p> -->
         <!-- this should redirect to the public quiz page -->
         <a href="">Try again?</a>
-        <a href="">share your result with friends</a>
+        <!-- <a href="">share your result with friends</a> -->
+        <a class="btn" type="button" id="share" role="button">Share your results</a>
+        <input type="text" id="show_url" value="<%= currentURL %>" readonly>
+
       </div>
     <% } %>
       <!-- how do i make this display all the questions and correct answers.  -->
@@ -46,6 +54,8 @@
 
 
   </main>
+
+
 
 </body>
 </html>
