@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="/styles/main.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/questions.js"></script>
 
   <title>Questions</title>
 </head>
@@ -32,7 +31,7 @@
         <div class="question my-2"><%= question.question %></div>
         <% answers.forEach(answer => { %>
           <% if(question.id === answer.question_id) { %>
-            <input type="radio" id="answer" name="answer" value="<%= answer.is_correct %>" >
+            <input type="radio" id="answer" name="answer" value="<%= answer.is_correct %>" required>
             <label for="answer.answer" class="px-3 py-2"><%= answer.answer %></label>
             <br>
           <% } %>

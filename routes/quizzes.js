@@ -32,6 +32,9 @@ router.post("/new", (req, res) => {
   submitQuiz(quizObj)
     .then((quiz_id) => {
 
+      //Set session for quiz_id
+      req.session.quiz_id = quiz_id;
+
       //OUTER loop 5 times, once for each question
       for (let i = 1; i <= 5; i++) {
         //Use template literals to access key related to each question in quizObj
@@ -68,8 +71,27 @@ router.post("/new", (req, res) => {
     });
 
   console.log('Quiz submitted successfully!!')
-  res.render("new-quiz");
+  res.redirect("confirm");
 });
+
+//GET confirm page (after submitting quiz)
+router.get('/confirm', (req, res) => {
+  //Retrieve quiz_id from session
+  const quiz_id = req.session.quiz_id;
+  console.log('quiz_id')
+  const templateVars = { quiz_id }
+  //Delete quiz_id from session
+  delete req.session.quiz_id;
+  res.render('confirm', templateVars);
+});
+
+//POST confirm page
+// router.post('/confirm', (req, res) => {
+//   const currentURL = req.headers.host + req.url
+//   console.log('currentURL')
+//   const templateVars = { currentURL }
+//   res.render('confirm', templateVars);
+// });
 
 ///////////////////////////////////////////
 router.get("/submit_quiz", (req, res) => {
@@ -107,7 +129,6 @@ router.post('/:id', (req, res) => {
   const quizId = req.params.id;
   const userId = req.cookies.userId;
   const {answer, nextQ} = req.body;
-  console.log("answer: ", answer);
 
   resultQueries.getResultByQuizIdAndUserId(quizId, userId)
   .then((result) => {
