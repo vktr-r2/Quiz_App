@@ -57,7 +57,7 @@ app.use('/results', resultsRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
   publicQuizQuery.getPublicQuizzes()
     .then((quizzes) => {
       const templateVars = { quizzes };
@@ -68,7 +68,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/login', (req, res) => {
+app.get('/', (req, res) => {
   res.render('login');
 });
 

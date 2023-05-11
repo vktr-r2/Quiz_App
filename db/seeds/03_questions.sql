@@ -13,8 +13,11 @@ VALUES (1, 4, 'Who was the Ancient Greek God of the Sun?');
 INSERT INTO questions (quiz_id, question_number, question)
 VALUES (1, 5, 'What year was the United Nations established?');
 
-INSERT INTO questions (quiz_id, question_number, question)
-VALUES (2, 1, 'Where would you be if you were standing on the Spanish Steps?');
 
 INSERT INTO questions (quiz_id, question_number, question)
-VALUES (3, 1, 'Which language has the more native speakers: English or Spanish?');
+VALUES (5, 1, 'What organ is in charge of breathing oxygen?'),
+(5, 2, 'What is the bone in your thigh called?'),
+(5, 3, 'What is the largest organ in the body?'),
+(5, 4, 'What organ filters your blood?'),
+(5, 5, 'How many main layers does the eye have?');
+
