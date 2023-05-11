@@ -6,12 +6,16 @@
  */
 
 const express = require('express');
+const cookieParser = require('cookie-parser')
 const router  = express.Router();
+
+router.use(cookieParser())
 
 const quizQueries = require('../db/queries/quizzes')
 
 router.get('/:id', (req, res) => {
   const userId = req.params.id;
+  res.cookie("userId", userId);
 
   quizQueries.getQuizzesByUserId(userId)
   .then((quizzes) => {
