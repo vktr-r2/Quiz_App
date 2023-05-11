@@ -8,9 +8,9 @@
   <%- include('./partials/_head') %>
 
   <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/questions.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/questions.js"></script>
 
   <title>Questions</title>
 </head>
@@ -24,13 +24,15 @@
       <form id="quiz-submit" method="POST" action="<% `/${question.quiz_id}?qNum=${question.question_number}` %>">
         <div class="qNumber"><%= `Question ${question.question_number}` %></div>
         <div class="question"><%= question.question %></div>
-        <% answers.forEach(answer => { %>
-          <% if(question.id === answer.question_id) { %>
-            <input type="radio" id="answer" name="answer" value="<%= answer.is_correct %>" required>
-            <label for="answer.answer"><%= answer.answer %></label>
-            <br>
-          <% } %>
-        <% }) %>
+        <div class="answers">
+          <% answers.forEach(answer => { %>
+            <% if(question.id === answer.question_id) { %>
+              <input type="radio" id="answer" name="answer" value="<%= answer.is_correct %>" required>
+              <label for="answer.answer"><%= answer.answer %></label>
+              <br>
+            <% } %>
+          <% }) %>
+        </div>
         <!-- <input class="previous" type="submit" value="Previous" /> -->
         <% if(question.question_number !== 5){ %>
           <input type="number" name="nextQ" value="<%= question.question_number + 1 %>" hidden>
