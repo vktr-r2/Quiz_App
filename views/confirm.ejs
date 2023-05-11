@@ -7,7 +7,7 @@
 
     <%- include('./partials/_head') %>
 
-    <title>Quiz App - New Quiz</title>
+    <title>Quiz App - Quiz Submitted</title>
 
     <!-- <link rel="stylesheet" type="text/css" href="/styles/new-quiz.css" /> -->
 
@@ -19,31 +19,16 @@
   <body>
     <header>
       <%- include('./partials/_header') %>
+
     </header>
 
     <main class="container d-flex flex-column align-items-center my-5">
+      <h1>Quiz Submitted!</h1>
 
-      <h1>Create a New Quiz</h1>
-      <form class="p-5" id="quiz-form" action="/quizzes/new" method="post">
-
-        <div id="quiz-info" class="d-flex flex-column">
-          <div class="mb-4">
-            <label for="quiz-name" class="submit_quiz">Quiz Name:</label>
-            <input type="text" id="quiz-name" class="submit_quiz" name="quiz_name" required>
-          </div>
-
-          <div class="mb-4">
-           <label for="private" class="submit_quiz">Private:</label>
-            <input type="checkbox" id="private" class="submit_quiz" name="private">
-          </div>
-
-          <button type="button" id="next" class="btn submit_quiz">Next</button>
-        </div>
-
-      </form>
+      <a class="btn" type="button" id="share" role="button">Share your results</a>
+        <input type="text" id="show_url" value="<%= quiz_id %>" readonly>
 
     </main>
-
 
     <!-- Bootstrap JS -->
     <script
