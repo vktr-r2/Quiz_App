@@ -24,9 +24,11 @@ const getTotalCorrectAnswers = (user_id, quiz_id) => {
 
 const getTotalQuestions = (quiz_id) => {
   return db.query((
-    `SELECT Count(*) AS total_questions
+    `SELECT Count(*) AS total_questions, quizzes.name
     FROM questions
-    WHERE quiz_id = $1`), [quiz_id])
+    JOIN quizzes ON quizzes.id = questions.quiz_id
+    WHERE quiz_id = $1
+    GROUP BY quizzes.name;`), [quiz_id])
   .then((res) => {
     // return res.rows[0];
     return res.rows[0];
