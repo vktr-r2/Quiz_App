@@ -9,7 +9,7 @@
 
     <title>Quiz App - New Quiz</title>
 
-    <link rel="stylesheet" type="text/css" href="/styles/new-quiz.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="/styles/new-quiz.css" /> -->
 
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/submit_new_quiz.js"></script>
@@ -28,16 +28,16 @@
 
         <div id="quiz-info" class="d-flex flex-column">
           <div class="mb-4">
-            <label for="quiz-name">Quiz Name:</label>
-            <input type="text" id="quiz-name" name="quiz_name" required>
+            <label for="quiz-name" class="submit_quiz">Quiz Name:</label>
+            <input type="text" id="quiz-name" class="submit_quiz" name="quiz_name" required>
           </div>
 
           <div class="mb-4">
-           <label for="private">Private:</label>
-            <input type="checkbox" id="private" name="private">
+           <label for="private" class="submit_quiz">Private:</label>
+            <input type="checkbox" id="private" class="submit_quiz" name="private">
           </div>
 
-          <button type="button" id="next" class="btn">Next</button>
+          <button type="button" id="next" class="btn submit_quiz">Next</button>
         </div>
 
       </form>

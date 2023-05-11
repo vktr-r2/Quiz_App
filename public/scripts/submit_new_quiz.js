@@ -9,7 +9,7 @@ $(document).ready(function () {
     // Check if '#quiz-name' has value input, if true then hide this part of the form
     if ($("#quiz-name").val()) {
 
-      $("#quiz-info").hide();
+      $(".submit_quiz").hide();
 
       // Call 'addQuestion' function to append new questions to form
       addQuestion();
