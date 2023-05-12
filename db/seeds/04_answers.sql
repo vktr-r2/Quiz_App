@@ -59,27 +59,27 @@ INSERT INTO answers (question_id, quiz_id, answer, is_correct)
 VALUES (5, 1, '1803', 'false');
 
 INSERT INTO answers (question_id, quiz_id, answer, is_correct)
-VALUES (6, 3, 'Heart', 'false'),
-(6, 3, 'Liver', 'false'),
-(6, 3, 'Stomach', 'false'),
-(6, 3, 'Lungs', 'true'),
+VALUES (6, 2, 'Heart', 'false'),
+(6, 2, 'Liver', 'false'),
+(6, 2, 'Stomach', 'false'),
+(6, 2, 'Lungs', 'true'),
 
-(7, 3, 'Tail Bone', 'false'),
-(7, 3, 'Spine', 'false'),
-(7, 3, 'Femur', 'true'),
-(7, 3, 'Skull', 'false'),
+(7, 2, 'Tail Bone', 'false'),
+(7, 2, 'Spine', 'false'),
+(7, 2, 'Femur', 'true'),
+(7, 2, 'Skull', 'false'),
 
-(8, 3, 'Stomach', 'false'),
-(8, 3, 'Skin', 'true'),
-(8, 3, 'Heart', 'false'),
-(8, 3, 'Eye ball', 'false'),
+(8, 2, 'Stomach', 'false'),
+(8, 2, 'Skin', 'true'),
+(8, 2, 'Heart', 'false'),
+(8, 2, 'Eye ball', 'false'),
 
-(9, 3, 'Liver', 'false'),
-(9, 3, 'Kidneys', 'true'),
-(9, 3, 'Appendix', 'false'),
-(9, 3, 'Small Intestine', 'false'),
+(9, 2, 'Liver', 'false'),
+(9, 2, 'Kidneys', 'true'),
+(9, 2, 'Appendix', 'false'),
+(9, 2, 'Small Intestine', 'false'),
 
-(10, 3, '3', 'true'),
-(10, 3, '14', 'false'),
-(10, 3, '5', 'false'),
-(10, 3, '1', 'false');
+(10, 2, '3', 'true'),
+(10, 2, '14', 'false'),
+(10, 2, '5', 'false'),
+(10, 2, '1', 'false');
