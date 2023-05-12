@@ -79,7 +79,7 @@ router.get('/confirm', (req, res) => {
   const quizURL = req.protocol + '://' + req.headers.host + '/quizzes/' + quiz_id;
   const templateVars = { quizURL }
   //Delete quiz_id from session
-  delete req.session.quiz_id;
+  // delete req.session.quiz_id;
   res.render('confirm', templateVars);
 });
 
