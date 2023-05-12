@@ -19,18 +19,19 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(
+  '/styles',
   sassMiddleware({
-    source: __dirname + '/styles',
+    source: __dirname + '/sass',
     destination: __dirname + '/public/styles',
     isSass: false, // false => scss, true => sass
   })
 );
 app.use(express.static('public'));
-app.use(cookieParser()); //commented this out because it was breaking my code.
+// app.use(cookieParser());
 app.use(session({
   secret: 'secret_key',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
 }));
 
 // Separated Routes for each Resource

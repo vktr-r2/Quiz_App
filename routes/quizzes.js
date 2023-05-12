@@ -75,8 +75,14 @@ router.post("/new", (req, res) => {
 //GET confirm page (after submitting quiz)
 router.get('/confirm', (req, res) => {
   //Retrieve quiz_id from session
+  console.log('logging anything')
   const quiz_id = req.session.quiz_id;
+
+  console.log('this is quiz id:', quiz_id)
+
   const quizURL = req.protocol + '://' + req.headers.host + '/quizzes/' + quiz_id;
+  console.log('this is quiz url:', quizURL)
+
   const templateVars = { quizURL }
   //Delete quiz_id from session
   delete req.session.quiz_id;
