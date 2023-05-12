@@ -64,15 +64,12 @@ router.post("/new", (req, res) => {
           }
         });
       }
-      console.log('Quiz submitted successfully!!')
       res.redirect("confirm");
     })
     //Handle errors from promise chain
     .catch((err) => {
       console.error("Error: ", err);
     });
-
-  res.redirect("confirm");
 });
 
 //GET confirm page (after submitting quiz)
