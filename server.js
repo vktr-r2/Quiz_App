@@ -27,11 +27,11 @@ app.use(
   })
 );
 app.use(express.static('public'));
-app.use(cookieParser()); //commented this out because it was breaking my code.
+// app.use(cookieParser());
 app.use(session({
   secret: 'secret_key',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
 }));
 
 // Separated Routes for each Resource

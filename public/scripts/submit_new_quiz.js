@@ -31,16 +31,21 @@ $(document).ready(function () {
 
       //Append question label and question text input field to div
       const questionLabel = $('<label>', { for: `question${questionCount}`, text: `Question ${questionCount}:` });
-      const questionInput = $('<input>', { type: 'text', id: `question${questionCount}`, name: `question${questionCount}`, required: true });
+      const questionInput = $('<input >', { class: "w-50", type: 'text', id: `question${questionCount}`, name: `question${questionCount}`, required: true });
       questionDiv.append(questionLabel, questionInput, $('<br><br><br>'));
+
+      //Add 'correct'
+      const header = $('<h6>', { text: 'Correct', class: 'header-margin' });
+      questionDiv.append(header);
 
       //Use for loop to append 4 answer options and correctAnswerRadio button for each question
       for (let i = 1; i <= 4; i++) {
         const answerLabel = $('<label>', { for: `answer${questionCount}_${i}`, text: `Answer ${i}:` });
         const answerInput = $('<input>', { type: 'text', id: `answer${questionCount}_${i}`, name: `answer${questionCount}_${i}`, required: true });
-        const correctAnswerRadio = $('<input>', { type: 'radio', name: `correctAnswer${questionCount}`, value: i, required: true });
+        const correctAnswerRadio = $('<input>', { type: 'radio', name: `correctAnswer${questionCount}`, value: i, required: true, class: 'radio-margin' });
         questionDiv.append(answerLabel, answerInput, correctAnswerRadio, $('<br><br>'));
       }
+
       // Create button with type 'button' and text 'Add Question' (type 'button' prevents submit)
       const addButton = $('<button>', { type: 'button', text: 'Add Question' });
 
@@ -68,20 +73,34 @@ $(document).ready(function () {
 
   //HELPER FUNCTION validateUserInputs
   //validate the inputs for the current question
-  function validateUserInputs(questionNumber) {
-    // Loop through the answer inputs for current question
+  function validateUserInputs(questionCount) {
+    const questionInput = $(`#question${questionCount}`);
     for (let i = 1; i <= 4; i++) {
-      // Check if the answer input has a value, if not return false
-      if (!$(`#answer${questionNumber}_${i}`).val()) {
+      const answerInput = $(`#answer${questionCount}_${i}`);
+      const radioInput = $(`input[name='correctAnswer${questionCount}']:checked`);
+
+      // Remove previous error highlighting
+      questionInput.removeClass("input-invalid");
+      answerInput.removeClass("input-invalid");
+
+      // Check if any of the fields are empty or radio button is not selected
+      if (!questionInput.val()) {
+        questionInput.addClass("input-invalid");
+        alert("Please fill in the question field before proceeding.");
+        return false;
+      }
+
+      if (!answerInput.val()) {
+        answerInput.addClass("input-invalid");
+        alert("Please fill in all answer fields before proceeding.");
+        return false;
+      }
+
+      if (!radioInput.val()) {
+        alert("Please select the correct answer before proceeding.");
         return false;
       }
     }
-    // Check if the question input has a value and if a correct answer radio button is selected
-    // If either condition is not met, return false
-    if (!$(`#question${questionNumber}`).val() || !$(`input[name=correctAnswer${questionNumber}]:checked`).val()) {
-      return false;
-    }
-    // If all inputs are valid, return true
     return true;
   }
 });

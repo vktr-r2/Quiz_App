@@ -10,7 +10,7 @@ const getPublicQuizzes = () => {
 // get all public quizzes and private using userId quizzes
 const getQuizzesByUserId = (id) => {
   return db
-    .query(`SELECT * FROM quizzes WHERE private IN (false, true) AND user_id = $1`, [id])
+    .query(`SELECT * FROM quizzes WHERE private = false OR private = true AND user_id = $1`, [id])
     .then((res) => {
       return res.rows;
     });

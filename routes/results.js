@@ -22,7 +22,7 @@ router.get('/:id/:userId/quiz_result', (req, res) => {
       let quizName = totalQuestions.name
 
       //Get URL from req and save in url variable
-      const currentURL = req.headers.host + req.url;
+      const currentURL = req.protocol + '://' + req.headers.host + req.originalUrl;
       const templateVars = { score, total, scorePercent, currentURL, quizName }
       res.render('results', templateVars);
     })
