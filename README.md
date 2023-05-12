@@ -4,9 +4,9 @@ QuizApp is a full stack web application built with EJS, CSS, SASS, Bootstrap, JS
 
 ## Final Product
 
-!["screenshot of Quiz List page"](https://github.com/vktr-r2/Quiz_App/blob/master/docs/puiz_list.png?raw=true)
-!["screenshot of Login page"](https://github.com/vktr-r2/Quiz_App/blob/master/docs/puiz_list.png?raw=true)
-!["screenshot of Create Quiz page"](https://github.com/vktr-r2/Quiz_App/blob/master/docs/puiz_list.png?raw=true)
+!["screenshot of Quiz List page"](https://github.com/vktr-r2/Quiz_App/blob/master/docs/quiz_list.png?raw=true)
+!["screenshot of Login page"](https://github.com/vktr-r2/Quiz_App/blob/master/docs/login_page.png?raw=true)
+!["screenshot of Create Quiz page"](https://github.com/vktr-r2/Quiz_App/blob/master/docs/create_quiz_page.png?raw=true)
 !["screenshot of Question page"](https://github.com/vktr-r2/Quiz_App/blob/master/docs/question_page.png?raw=true)
 !["screenshot of Result page"](https://github.com/vktr-r2/Quiz_App/blob/master/docs/result_page.png?raw=true)
 
